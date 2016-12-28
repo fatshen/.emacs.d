@@ -2,7 +2,6 @@
 
 (when (>= emacs-major-version 24)
   (require 'package)
-  (package-initialize)
   (add-to-list 'package-archives '("gnu" . "http://elpa.emacs-china.org/gnu/") t)
   (add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
   )
@@ -43,7 +42,6 @@
 
 (global-hungry-delete-mode)
 
-(require 'smartparens-config)
 ;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
 
