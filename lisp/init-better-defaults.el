@@ -5,10 +5,10 @@
 
 (abbrev-mode t)
 (define-abbrev-table 'global-abbrev-table '(
-                                              ;; signature
-                                              ("8zl" "zilongshanren")
-                                              ;; emacs regex
-                                              ))
+					    ;; signature
+					    ("8zl" "zilongshanren")
+					    ;; emacs regex
+					    ))
 
 
 (setq make-backup-files nil)
@@ -39,5 +39,17 @@
       (progn
 	(indent-buffer)
 	(message "Indented buffer.")))))
+
+
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+                                         try-expand-dabbrev-all-buffers
+                                         try-expand-dabbrev-from-kill
+                                         try-complete-file-name-partially
+                                         try-complete-file-name
+                                         try-expand-all-abbrevs
+                                         try-expand-list
+                                         try-expand-line
+                                         try-complete-lisp-symbol-partially
+                                         try-complete-lisp-symbol))
 
 (provide 'init-better-defaults)
