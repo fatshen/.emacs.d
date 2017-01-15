@@ -52,4 +52,13 @@
                                          try-complete-lisp-symbol-partially
                                          try-complete-lisp-symbol))
 
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'always)
+
+(put 'dired-find-alternate-file 'disabled nil)
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
+
 (provide 'init-better-defaults)

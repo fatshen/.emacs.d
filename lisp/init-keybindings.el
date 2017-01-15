@@ -22,4 +22,8 @@
 
 (global-set-key (kbd "s-/") 'hippie-expand)
 
+(require 'dired-x)
+
+(setq dired-dwim-target t)
+
 (provide 'init-keybindings)
