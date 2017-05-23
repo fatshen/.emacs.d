@@ -26,6 +26,7 @@
 			    org-pomodoro
 			    helm-ag
 			    flycheck
+			    auto-yasnippet
 			    )  "Default packages")
 
 (setq package-selected-packages  sandwich/packages)
@@ -52,7 +53,8 @@
 
 ;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
- (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+(sp-local-pair 'lisp-interaction-mode "'" nil :actions nil)
 
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
@@ -105,6 +107,10 @@
 (require 'org-pomodoro)
 
 (add-hook 'python-mode-hook 'flycheck-mode)
+
+(require 'yasnippet)
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 (provide 'init-packages)
 
