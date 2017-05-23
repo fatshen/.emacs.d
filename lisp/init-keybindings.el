@@ -26,4 +26,17 @@
 
 (setq dired-dwim-target t)
 
+(global-set-key (kbd "C-c r") 'org-capture)
+
+(global-set-key (kbd "C-c t i") 'my-toggle-web-indent)
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous))
+
+(global-set-key (kbd "C-c p s") 'helm-do-ag-project-root)
+
 (provide 'init-keybindings)

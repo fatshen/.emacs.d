@@ -24,6 +24,8 @@
 			    expand-region
 			    iedit
 			    org-pomodoro
+			    helm-ag
+			    flycheck
 			    )  "Default packages")
 
 (setq package-selected-packages  sandwich/packages)
@@ -87,7 +89,6 @@
       (setq css-indent-offset (if (= css-indent-offset 2) 4 2)))
   (setq indent-tabs-mode nil))
 
-(global-set-key (kbd "C-c t i") 'my-toggle-web-indent)
 
 ;; config for js2-refactor
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
@@ -99,9 +100,11 @@
 (require 'popwin)
 (popwin-mode t)
 
-(global-set-key (kbd "C-=") 'er/expand-region)
-
 (require 'iedit)
+
+(require 'org-pomodoro)
+
+(add-hook 'python-mode-hook 'flycheck-mode)
 
 (provide 'init-packages)
 
