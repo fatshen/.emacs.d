@@ -27,6 +27,7 @@
 			    helm-ag
 			    flycheck
 			    auto-yasnippet
+			    evil
 			    )  "Default packages")
 
 (setq package-selected-packages  sandwich/packages)
@@ -111,6 +112,10 @@
 (require 'yasnippet)
 (yas-reload-all)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
+
+(evil-mode 1)
+(setcdr evil-insert-state-map nil)
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
 
 (provide 'init-packages)
 
