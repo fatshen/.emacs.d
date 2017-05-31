@@ -28,6 +28,11 @@
 			    flycheck
 			    auto-yasnippet
 			    evil
+			    evil-leader
+			    window-numbering
+			    evil-surround
+			    evil-nerd-commenter
+			    which-key
 			    )  "Default packages")
 
 (setq package-selected-packages  sandwich/packages)
@@ -116,6 +121,52 @@
 (evil-mode 1)
 (setcdr evil-insert-state-map nil)
 (define-key evil-insert-state-map [escape] 'evil-normal-state)
+
+(global-evil-leader-mode)
+(evil-leader/set-key
+  "ff" 'find-file
+  "fr" 'recentf-open-files
+  "bb" 'switch-to-buffer
+  "bk" 'kill-buffer
+  "pf" 'counsel-git
+  "ps" 'helm-do-ag-project-root
+  "0" 'select-window-0
+  "1" 'select-window-1
+  "2" 'select-window-2
+  "3" 'select-window-3
+  "w/" 'split-window-right
+  "w-" 'split-window-below
+  ":" 'counsel-M-x
+  "wm" 'delete-other-windows
+  "qq" 'save-buffers-kill-terminal
+  )
+
+(window-numbering-mode 1)
+
+(require 'evil-surround)
+(global-evil-surround-mode 1)
+
+(global-set-key (kbd "M-;") 'evilnc-comment-or-uncomment-lines)
+(evilnc-default-hotkeys)
+
+(dolist (mode '(ag-mode
+		flycheck-error-list-mode
+		git-rebase-mode))
+  (add-to-list 'evil-emacs-state-modes mode))
+
+
+(add-hook 'occur-mode-hook
+	  (lambda ()
+	    (evil-add-hjkl-bindings occur-mode-map 'emacs
+	      (kbd "/")       'evil-search-forward
+              (kbd "n")       'evil-search-next
+              (kbd "N")       'evil-search-previous
+              (kbd "C-d")     'evil-scroll-down
+              (kbd "C-u")     'evil-scroll-up
+	      )))
+
+(which-key-mode 1)
+
 
 (provide 'init-packages)
 
